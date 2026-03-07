@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Game Mode</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="page">
+    <div class="card mode-card">
+
+        <h2 class="card-title">Select Game Mode</h2>
+        <p class="card-subtitle">Choose how you want to play</p>
+
+        <div class="mode-buttons">
+
+            <!-- Player vs AI -->
+            <a href="{{ url_for('start', mode='ai') }}">
+                <button class="btn-primary">
+                    🤖 Player vs AI
+                </button>
+            </a>
+
+            <!-- Player vs Player -->
+            <a href="{{ url_for('start', mode='pvp') }}">
+                <button class="btn-secondary">
+                    👥 Player vs Player
+                </button>
+            </a>
+
+            <!-- Home -->
+            <a href="{{ url_for('home') }}">
+                <button class="btn-secondary">
+                    ← Home
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Global Click Sound -->
+<audio id="ui-click-sound" src="{{ url_for('static', filename='sounds/click.mp3') }}"></audio>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

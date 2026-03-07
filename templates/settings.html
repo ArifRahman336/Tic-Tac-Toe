@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Settings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=9000">
+</head>
+<body>
+
+<header class="app-header">
+    <div class="app-brand">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="app-logo">
+        <span class="app-name">Ultimate Tic-Tac-Toe</span>
+    </div>
+    <div class="app-actions">
+        <a href="{{ url_for('home') }}">
+            <button class="header-btn">Home</button>
+        </a>
+    </div>
+</header>
+
+<main class="settings-main">
+<section class="settings-panel">
+
+<h1 class="settings-title">Game Settings</h1>
+<p class="settings-subtitle">Configure gameplay preferences</p>
+
+<form method="post" class="settings-form">
+
+    <!-- GAME MODE -->
+    <div class="settings-item">
+        <div class="settings-text">
+            <label>Game Mode</label>
+            <span>Select how you want to play</span>
+        </div>
+        <select name="mode" id="game-mode">
+            <option value="ai" {% if mode == "ai" %}selected{% endif %}>Player vs AI</option>
+            <option value="pvp" {% if mode == "pvp" %}selected{% endif %}>Player vs Player</option>
+        </select>
+    </div>
+
+    <!-- PLAYER 1 NAME -->
+    <div class="settings-item">
+        <div class="settings-text">
+            <label>Player 1 Name</label>
+            <span>Main player</span>
+        </div>
+        <input type="text" name="player1_name" value="{{ player1_name }}" placeholder="Player 1">
+    </div>
+
+    <!-- PLAYER 2 NAME -->
+    <div class="settings-item" id="player2-group">
+        <div class="settings-text">
+            <label>Player 2 Name</label>
+            <span>Second player</span>
+        </div>
+        <input type="text" name="player2_name" value="{{ player2_name }}" placeholder="Player 2">
+    </div>
+
+    <!-- AI DIFFICULTY -->
+    <div class="settings-item" id="ai-difficulty-group">
+        <div class="settings-text">
+            <label>AI Difficulty</label>
+            <span>Controls AI strength</span>
+        </div>
+        <select name="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium" {% if difficulty == "medium" %}selected{% endif %}>Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div>
+
+    <!-- PLAYER 1 SYMBOL -->
+    <div class="settings-item">
+        <div class="settings-text">
+            <label>Player 1 Symbol</label>
+            <span>Other player / AI gets the remaining symbol</span>
+        </div>
+        <select name="player1_symbol" id="player1-symbol">
+            <option value="X" {% if player_color == "X" %}selected{% endif %}>X</option>
+            <option value="O" {% if player_color == "O" %}selected{% endif %}>O</option>
+        </select>
+    </div>
+
+    <!-- SAVE -->
+    <div class="settings-actions">
+        <button class="btn-primary" type="submit">Save Settings</button>
+    </div>
+
+</form>
+</section>
+</main>
+
+<!-- ================= INLINE JS (GUARANTEED) ================= -->
+<script>
+function updateSettingsUI() {
+    const mode = document.getElementById("game-mode").value;
+    const p2 = document.getElementById("player2-group");
+    const ai = document.getElementById("ai-difficulty-group");
+
+    if (mode === "ai") {
+        p2.style.display = "none";
+        ai.style.display = "flex";
+    } else {
+        p2.style.display = "flex";
+        ai.style.display = "none";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    updateSettingsUI();
+    document.getElementById("game-mode").addEventListener("change", updateSettingsUI);
+});
+</script>
+
+</body>
+</html>

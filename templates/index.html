@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ultimate Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<audio id="ui-click-sound" src="{{ url_for('static', filename='sounds/click.mp3') }}"></audio>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<body>
+
+<h1>Ultimate Tic-Tac-Toe</h1>
+<p class="subtitle">Human (X) vs AI (O)</p>
+
+<div id="status" class="status">Play in any board</div>
+
+<div id="game-board" class="big-board"></div>
+
+<div class="controls">
+    <button onclick="resetGame()">Reset Game</button>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

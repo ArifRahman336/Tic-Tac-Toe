@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ultimate Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=3000">
+</head>
+
+<body>
+
+<!-- ================= APP HEADER ================= -->
+<header class="app-header">
+    <div class="app-brand">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="app-logo">
+        <span class="app-name">Ultimate Tic-Tac-Toe</span>
+    </div>
+
+    <div class="app-actions">
+        <button class="header-btn" onclick="toggleThemePopup()">Theme</button>
+        <a href="{{ url_for('settings') }}">
+            <button class="header-btn">Settings</button>
+        </a>
+    </div>
+</header>
+
+<!-- ================= MAIN CONTENT ================= -->
+<main class="app-main">
+
+    <div class="home-container">
+
+        <!-- HERO -->
+        <section class="app-hero">
+            <h1 class="hero-title">
+                Welcome to Ultimate Tic-Tac-Toe
+            </h1>
+
+            <p class="hero-subtitle">
+                A strategic Ultimate Tic-Tac-Toe experience powered by
+                Minimax and Alpha-Beta Pruning.
+            </p>
+
+            <div class="hero-actions">
+                <a href="/start/{{ session.get('mode', 'ai') }}">
+                    <button class="btn-primary btn-xl">
+                        Play Game
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <!-- STATS BAR -->
+        <section class="stats-bar">
+
+            <div class="stat">
+                <span class="stat-label">Game Mode</span>
+                <span class="stat-value">
+                    {{ "Player vs AI" if session.get("mode","ai") == "ai" else "Player vs Player" }}
+                </span>
+            </div>
+
+            {% if session.get("mode", "ai") == "ai" %}
+<div class="stat">
+    <span class="stat-label">AI Difficulty</span>
+    <span class="stat-value">
+        {{ session.get("difficulty", "Medium").capitalize() }}
+    </span>
+</div>
+{% endif %}
+
+
+            <div class="stat">
+                <span class="stat-label">Algorithm</span>
+                <span class="stat-value">
+                    Minimax + Alpha-Beta
+                </span>
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="app-footer">
+    <div class="footer-content">
+
+        <span class="footer-name">
+            Developed by <strong>Arif Rahman Samad & Adiluzzaman Tuhin</strong>
+        </span>
+
+        <span class="footer-separator">•</span>
+
+        <a href="mailto:arifrahmansamad@gmail.com" class="footer-link">
+            arifrahmansamad@gmail.com
+        </a>
+
+        <span class="footer-separator">•</span>
+
+        <a href="https://www.linkedin.com/in/arif-rahman-samad"
+           target="_blank" class="footer-link">
+            LinkedIn
+        </a>
+
+    </div>
+</footer>
+
+<!-- ================= THEME PICKER POPUP ================= -->
+<div id="theme-popup" class="theme-popup hidden">
+    <div class="theme-option theme-blue" onclick="selectTheme('theme-blue')">
+        <span class="color-dot"></span> Blue
+    </div>
+    <div class="theme-option theme-purple" onclick="selectTheme('theme-purple')">
+        <span class="color-dot"></span> Purple
+    </div>
+    <div class="theme-option theme-green" onclick="selectTheme('theme-green')">
+        <span class="color-dot"></span> Green
+    </div>
+    <div class="theme-option theme-slate" onclick="selectTheme('theme-slate')">
+        <span class="color-dot"></span> Slate
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

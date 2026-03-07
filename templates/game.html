@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ultimate Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- ================= GAME HEADER ================= -->
+<header class="game-header">
+    <h1 class="game-title">Ultimate Tic-Tac-Toe</h1>
+
+    <!-- SINGLE STATUS INDICATOR -->
+    <div id="status" class="status turn-indicator">
+        {% if session.get("mode") == "ai" %}
+            {{ session.get("player1_name", "Player") }} vs AI
+        {% else %}
+            {{ session.get("player1_name", "Player 1") }}
+            vs
+            {{ session.get("player2_name", "Player 2") }}
+        {% endif %}
+    </div>
+</header>
+
+<!-- ================= GAME META (FOR JS ONLY) ================= -->
+<div id="game-meta"
+     data-mode="{{ session.get('mode','ai') }}"
+     data-p1-name="{{ session.get('player1_name','Player 1') }}"
+     data-p2-name="{{ session.get('player2_name','AI') }}"
+     data-p1-symbol="{{ session.get('p1_symbol','X') }}"
+     data-p2-symbol="{{ session.get('p2_symbol','O') }}">
+</div>
+<!-- ================= WINNER MODAL ================= -->
+<div id="winner-modal" class="winner-modal hidden">
+    <div class="winner-card">
+
+        <h2 id="winner-title">🏆 Game Over</h2>
+
+        <!-- Winner text -->
+        <p id="winner-text" class="winner-text">
+            Winner
+        </p>
+
+        <div class="winner-actions">
+            <button class="btn-primary" onclick="playAgain()">Play Again</button>
+            <a href="/"><button class="btn-secondary">Home</button></a>
+        </div>
+
+        <!-- <div class="winner-owner">
+            Developed by <strong>Arif Rahman Samad</strong>
+        </div> -->
+
+    </div>
+</div>
+
+
+
+<!-- ================= GAME AREA ================= -->
+<main class="game-container">
+
+    <!-- BOARD -->
+    <div id="game-board" class="big-board"></div>
+
+</main>
+
+<!-- ================= FOOTER CONTROLS ================= -->
+<footer class="game-footer">
+    <button class="btn-danger" onclick="resetGame()">Reset</button>
+    <a href="/"><button class="btn-secondary">Home</button></a>
+</footer>
+
+<!-- ================= CLICK SOUND ================= -->
+<audio id="ui-click-sound"
+       src="{{ url_for('static', filename='sounds/click.mp3') }}">
+</audio>
+
+<!-- ================= JS ================= -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

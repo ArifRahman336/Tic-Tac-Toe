@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Result</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Prevent caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+</head>
+<body>
+
+<div class="page">
+    <div class="card result-card">
+
+        {% if winner == "X" %}
+            <h2>🏆 Player X Wins!</h2>
+            <p class="result-text">Excellent strategy and moves!</p>
+        {% elif winner == "O" %}
+            <h2>🤖 Player O Wins!</h2>
+            <p class="result-text">The opponent played very well!</p>
+        {% else %}
+            <h2>🤝 It's a Draw!</h2>
+            <p class="result-text">Well played by both sides.</p>
+        {% endif %}
+
+        <div class="footer-buttons">
+            <a href="{{ url_for('start', mode=mode) }}">
+                <button class="btn-primary">🔄 Play Again</button>
+            </a>
+
+            <a href="{{ url_for('home') }}">
+                <button class="btn-secondary">🏠 Home</button>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- UI Click Sound -->
+<audio id="ui-click-sound" src="{{ url_for('static', filename='sounds/click.mp3') }}"></audio>
+
+<!-- JS -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<!-- Launch Confetti on Load -->
+<script>
+    window.onload = () => {
+        if (typeof launchConfetti === "function") {
+            launchConfetti();
+        }
+    };
+</script>
+
+</body>
+</html>
