@@ -61,9 +61,9 @@ tic-tac-toe/
 ├─ requirements.txt       # Python dependencies
 └─ README.md              # Project documentation  
 ```
-### How to Play
--Open the game in a browser.
--Choose PvP (Player vs Player) or PvAI (Player vs AI).
--Set player names, symbols, and AI difficulty (if applicable).
--Click on cells to make moves; the game automatically switches turns.
--The game detects a winner or tie and allows resetting.
+## How to Play
+- Open the game in a browser.
+- Choose PvP (Player vs Player) or PvAI (Player vs AI).
+- Set player names, symbols, and AI difficulty (if applicable).
+- Click on cells to make moves; the game automatically switches turns.
+- The game detects a winner or tie and allows resetting.
