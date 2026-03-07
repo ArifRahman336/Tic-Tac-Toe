@@ -29,20 +29,25 @@ A web-based Tic Tac Toe game built with **Flask** and **Python**, featuring **Pv
 ```bash
 git clone https://github.com/yourusername/tic-tac-toe.git
 cd tic-tac-toe
+```
 ### 2. Create a virtual environment and activate it
+```bash
 python -m venv venv
 # On Windows
 venv\Scripts\activate
 # On macOS/Linux
 source venv/bin/activate  
-
+```
 ### 3. Install dependencies
+```bash
 pip install -r requirements.txt
-
+```
 ### 4. Run the app
+```bash
 python app.py
-
+```
 ### Folder Structure
+```bash
 tic-tac-toe/
 │
 ├─ app.py                 # Main Flask application
@@ -55,15 +60,10 @@ tic-tac-toe/
 ├─ static/                # CSS & JS files
 ├─ requirements.txt       # Python dependencies
 └─ README.md              # Project documentation  
-
-How to Play
-
-Open the game in a browser.
-
-Choose PvP (Player vs Player) or PvAI (Player vs AI).
-
-Set player names, symbols, and AI difficulty (if applicable).
-
-Click on cells to make moves; the game automatically switches turns.
-
-The game detects a winner or tie and allows resetting.
+```
+### How to Play
+-Open the game in a browser.
+-Choose PvP (Player vs Player) or PvAI (Player vs AI).
+-Set player names, symbols, and AI difficulty (if applicable).
+-Click on cells to make moves; the game automatically switches turns.
+-The game detects a winner or tie and allows resetting.
